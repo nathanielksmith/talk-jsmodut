@@ -3,10 +3,11 @@
     var $body;
 
     var paint_it_black = {
-        init: function() {
+        init: function(jq) {
+            $ = jq;
             var paint = this.paint.bind(this);
-            cmg.query(function() {
-                $body = cmg.query('body');
+            $(function() {
+                $body = $('body');
                 $body.on('click', paint);
             });
         },
