@@ -1,12 +1,18 @@
 (function() {
     var black = '#000000';
-    var $body = cmg.query('body');
+    var $body;
 
-    var paint_black = function() {
-        $body.css('background-color', black);
+    var paint_it_black = {
+        init: function() {
+            var paint = this.paint.bind(this);
+            cmg.query(function() {
+                $body = cmg.query('body');
+                $body.on('click', paint);
+            });
+        },
+        paint: function() {
+            $body.css('background-color', black);
+        }
     };
-
-    cmg.query(function() {
-        $body.on('click', paint_black);
-    });
+    window.paint_it_black = paint_it_black;
 })();
